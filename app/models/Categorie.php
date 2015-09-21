@@ -5,7 +5,7 @@
  * @version 1.1
  * @package helpdesk.models
  */
-class Categorie extends Base{
+class Categorie extends Base {
 	/**
 	 * @Id
 	 */
@@ -17,51 +17,41 @@ class Categorie extends Base{
 	 */
 	private $categorie;
 	/**
-	* @OneToMany(mappedBy="categorie",className="Categorie")
-	*/
+	 * @OneToMany(mappedBy="categorie",className="Categorie")
+	 */
 	private $categories;
-
 	public function getId() {
 		return $this->id;
 	}
-
 	public function setId($id) {
-		$this->id=$id;
+		$this->id = $id;
 		return $this;
 	}
-
 	public function getLibelle() {
 		return $this->libelle;
 	}
-
 	public function setLibelle($libelle) {
-		$this->libelle=$libelle;
+		$this->libelle = $libelle;
 		return $this;
 	}
-
 	public function getCategorie() {
 		return $this->categorie;
 	}
-
 	public function setCategorie($categorie) {
-		$this->categorie=$categorie;
+		$this->categorie = $categorie;
 		return $this;
 	}
-
-	public function toString(){
-		$parent="";
-		if(isset($this->categorie))
-			$parent=" (".$this->categorie.")";
-		return $this->libelle.$parent;
+	public function toString() {
+		$parent = "";
+		if (isset ( $this->categorie ))
+			$parent = " (" . $this->categorie . ")";
+		return $this->libelle . $parent;
 	}
-
 	public function getCategories() {
 		return $this->categories;
 	}
-
 	public function setCategories($categories) {
-		$this->categories=$categories;
+		$this->categories = $categories;
 		return $this;
 	}
-
 }

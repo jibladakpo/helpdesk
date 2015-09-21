@@ -6,8 +6,8 @@
  * @package helpdesk.models
  */
 abstract class Base {
-	public function __toString(){
-		return $this->toString();
+	public function __toString() {
+		return $this->toString ();
 	}
 	abstract public function toString();
 }

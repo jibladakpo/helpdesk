@@ -32,4 +32,9 @@ class Faqs extends \_DefaultController {
 		$ArticleMax=DAO::getOne("Faq","id=(SELECT max(id) FROM Faq)");
 		echo $ArticleMax;
 	}
+	
+	public function frm($id=NULL){
+		$faq=$this->getInstance($id);
+		$this->loadView("faq/vAdd",array("faq"=>$faq));
+	}
 }
