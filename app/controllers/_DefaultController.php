@@ -43,7 +43,7 @@ class _DefaultController extends BaseController {
 		foreach ($objects as $object){
 			echo "<tr>";
 			echo "<td>".$object->toString()."</td>";
-			echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frm/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>".
+			echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>".
 			"<td class='td-center'><a class='btn btn-warning btn-xs' href='".$baseHref."/delete/".$object->getId()."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a></td>";
 			echo "</tr>";
 		}
@@ -77,6 +77,10 @@ class _DefaultController extends BaseController {
 	 * @param string $id
 	 */
 	public function frm($id=NULL){
+		echo "Non implémenté...";
+	}
+	
+	public function frmUpdate($id=NULL){
 		echo "Non implémenté...";
 	}
 
