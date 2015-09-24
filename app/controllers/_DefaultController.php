@@ -42,9 +42,17 @@ class _DefaultController extends BaseController {
 		echo "<tbody>";
 		foreach ($objects as $object){
 			echo "<tr>";
+<<<<<<< HEAD
 			echo "<td><a href='".$baseHref."/viewA/".$object->getId()."'>$object</a> </td>";
 			
 			echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frm/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>".
+=======
+
+			echo "<td>".$object->toString()."</td>";
+			echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>";
+			echo "<td><a href=  '".$baseHref."/viewA/".$object->getId()."'>$object</a> </td>";
+			echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frm/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>";
+>>>>>>> origin/master
 			"<td class='td-center'><a class='btn btn-warning btn-xs' href='".$baseHref."/delete/".$object->getId()."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a></td>";
 			echo "</tr>";
 		}
@@ -78,6 +86,10 @@ class _DefaultController extends BaseController {
 	 * @param string $id
 	 */
 	public function frm($id=NULL){
+		echo "Non implémenté...";
+	}
+	
+	public function frmUpdate($id=NULL){
 		echo "Non implémenté...";
 	}
 

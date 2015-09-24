@@ -46,10 +46,23 @@ class Faqs extends \_DefaultController {
 		$this->loadView("faq/vAdd",array("faq"=>$faq,"listCat"=>$listCat));
 	}
 	
+
+	public function frmUpdate($id=NULL){
+		$faq=$this->getInstance($id);
+		$categories=DAO::getAll("Categorie");
+		if($faq->getCategorie()==null){
+			$cat=-1;
+		}else{
+			$cat=$faq->getCategorie()->getId();
+		}
+		$listCat=Gui::select($categories,$cat,"Sélectionner une catégorie ...");
+		$this->loadView("faq/vUpdate",array("faq"=>$faq,"listCat"=>$listCat));
+	}
 	public function viewA($id=NULL){
 		$ticket=$this->getInstance($id);
 		$this->loadView("faq/viewArticleF",array("ticket"=>$ticket));
 	
+
 	}
 	
 	public function getInstance($id = NULL) {
@@ -58,7 +71,7 @@ class Faqs extends \_DefaultController {
 			$obj->setUser(Auth::getUser());
 		}
 		if($obj->getDateCreation()===NULL){
-			$obj->setdateCreation(date('Y-m-d H:i:s'));
+			$obj->setdateCreation(date('d-m-Y H:i:s'));
 		}
 		return $obj;
 	}

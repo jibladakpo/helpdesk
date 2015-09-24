@@ -21,6 +21,8 @@
 	<input type="text" name="dateCreation" id="dateCreation" value="<?php echo $faq->getDateCreation()?>" disabled class="form-control">
 	<input type="hidden" name="idUser" value="<?php echo $faq->getUser()->getId()?>">
 </div>
-<input type="submit" value="Ajouter" class="btn btn-default">
+
 <a class="btn btn-default" href="<?php echo $config["siteUrl"]?>faqs">Annuler</a>
+
+<input type="submit" value="Modifier" class="btn btn-default">
 </form>

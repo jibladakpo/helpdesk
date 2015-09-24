@@ -51,10 +51,34 @@ class Tickets extends \_DefaultController {
 		echo Jquery::execute("CKEDITOR.replace( 'description');");
 	}
 	
+
+	public function frmUpdate($id=NULL){
+		$ticket=$this->getInstance($id);
+		$categories=DAO::getAll("Categorie");
+		$statuts = DAO::getAll("statut");
+		if($ticket->getCategorie()==null){
+			$cat=-1;
+		}else{
+			$cat=$ticket->getCategorie()->getId();
+		}
+
+		if($ticket->getStatut()==null){
+			$stt=-1;
+		}else{
+			$stt=$ticket->getStatut()->getId();
+		}
+		$listCat=Gui::select($categories,$cat,"Sélectionner une catégorie ...");
+		$listType=Gui::select(array("demande","intervention"),$ticket->getType(),"Sélectionner un type ...");
+		$listStatut=Gui::select($statuts,$stt,"Modifier le statut ...");
+		
+		$this->loadView("ticket/vUpdate",array("ticket"=>$ticket,"listCat"=>$listCat,"listType"=>$listType,"listStatut"=>$listStatut));
+		echo Jquery::execute("CKEDITOR.replace( 'description');");
+	}
 	public function viewA($id=NULL){
 		$ticket=$this->getInstance($id);
 		$this->loadView("ticket/viewArticle",array("ticket"=>$ticket));
 	
+
 	}
 
 	/* (non-PHPdoc)
@@ -85,7 +109,7 @@ class Tickets extends \_DefaultController {
 			$obj->setUser(Auth::getUser());
 		}
 		if($obj->getDateCreation()===NULL){
-			$obj->setdateCreation(date('Y-m-d H:i:s'));
+			$obj->setdateCreation(date('d-m-Y H:i:s'));
 		}
 		return $obj;
 	}
