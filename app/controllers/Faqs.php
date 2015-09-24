@@ -46,6 +46,12 @@ class Faqs extends \_DefaultController {
 		$this->loadView("faq/vAdd",array("faq"=>$faq,"listCat"=>$listCat));
 	}
 	
+	public function viewA($id=NULL){
+		$ticket=$this->getInstance($id);
+		$this->loadView("faq/viewArticleF",array("ticket"=>$ticket));
+	
+	}
+	
 	public function getInstance($id = NULL) {
 		$obj=parent::getInstance($id);
 		if($obj->getUser()===NULL){

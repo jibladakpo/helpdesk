@@ -50,6 +50,12 @@ class Tickets extends \_DefaultController {
 		$this->loadView("ticket/vAdd",array("ticket"=>$ticket,"listCat"=>$listCat,"listType"=>$listType));
 		echo Jquery::execute("CKEDITOR.replace( 'description');");
 	}
+	
+	public function viewA($id=NULL){
+		$ticket=$this->getInstance($id);
+		$this->loadView("ticket/viewArticle",array("ticket"=>$ticket));
+	
+	}
 
 	/* (non-PHPdoc)
 	 * @see _DefaultController::setValuesToObject()

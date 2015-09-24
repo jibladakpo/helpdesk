@@ -10,8 +10,8 @@ class Ticket extends Base {
 	 * @Id
 	 */
 	private $id;
-	private $type;
 	private $titre;
+	private $type;
 	private $description;
 	private $dateCreation;
 	/**
@@ -25,6 +25,7 @@ class Ticket extends Base {
 	 * @JoinColumn(name="idUser",className="User",nullable=false)
 	 */
 	private $user;
+	
 	
 	/**
 	 * @ManyToOne
@@ -101,13 +102,7 @@ class Ticket extends Base {
 		return $this;
 	}
 	public function toString() {
-		$cat = "";
-		if ($this->categorie !== null)
-			$cat = $this->categorie;
-		$stat = "";
-		if ($this->statut !== null)
-			$stat = $this->statut;
-		return $this->titre . " - " . $cat . " - " . $stat;
+		return $this->titre . " - " . $this->user;
 	}
 	public function getMessages() {
 		return $this->messages;
