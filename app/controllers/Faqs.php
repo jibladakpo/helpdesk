@@ -46,6 +46,7 @@ class Faqs extends \_DefaultController {
 		$this->loadView("faq/vAdd",array("faq"=>$faq,"listCat"=>$listCat));
 	}
 	
+
 	public function frmUpdate($id=NULL){
 		$faq=$this->getInstance($id);
 		$categories=DAO::getAll("Categorie");
@@ -56,6 +57,12 @@ class Faqs extends \_DefaultController {
 		}
 		$listCat=Gui::select($categories,$cat,"Sélectionner une catégorie ...");
 		$this->loadView("faq/vUpdate",array("faq"=>$faq,"listCat"=>$listCat));
+	}
+	public function viewA($id=NULL){
+		$ticket=$this->getInstance($id);
+		$this->loadView("faq/viewArticleF",array("ticket"=>$ticket));
+	
+
 	}
 	
 	public function getInstance($id = NULL) {

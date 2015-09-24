@@ -51,6 +51,7 @@ class Tickets extends \_DefaultController {
 		echo Jquery::execute("CKEDITOR.replace( 'description');");
 	}
 	
+
 	public function frmUpdate($id=NULL){
 		$ticket=$this->getInstance($id);
 		$categories=DAO::getAll("Categorie");
@@ -72,6 +73,12 @@ class Tickets extends \_DefaultController {
 		
 		$this->loadView("ticket/vUpdate",array("ticket"=>$ticket,"listCat"=>$listCat,"listType"=>$listType,"listStatut"=>$listStatut));
 		echo Jquery::execute("CKEDITOR.replace( 'description');");
+	}
+	public function viewA($id=NULL){
+		$ticket=$this->getInstance($id);
+		$this->loadView("ticket/viewArticle",array("ticket"=>$ticket));
+	
+
 	}
 
 	/* (non-PHPdoc)
