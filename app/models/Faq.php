@@ -82,6 +82,7 @@ class Faq extends Base {
 		return $this->popularity;
 	}
 	public function setPopularity($popularity) {
+		
 		$this->popularity = $popularity;
 		return $this;
 	}

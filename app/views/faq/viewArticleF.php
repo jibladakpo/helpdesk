@@ -1,4 +1,4 @@
-<form method="post" action="tickets/update">
+<form method="post" action="viewArticle">
 <fieldset>
 
 <div class="form-group">
