@@ -43,8 +43,6 @@ class _DefaultController extends BaseController {
 		foreach ($objects as $object){
 			echo "<tr>";
 
-			echo "<td>".$object->toString()."</td>";
-			
 			echo "<td><a href= '".$baseHref."/viewA/".$object->getId()."'>$object</a> </td>";
 			echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>".
 
