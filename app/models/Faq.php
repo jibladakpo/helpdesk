@@ -76,6 +76,7 @@ class Faq extends Base {
 		return $this;
 	}
 	public function toString() {
+		
 		return $this->titre . " - " . $this->user;
 	}
 	public function getPopularity() {

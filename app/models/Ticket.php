@@ -102,7 +102,14 @@ class Ticket extends Base {
 		return $this;
 	}
 	public function toString() {
-		return $this->titre . " - " . $this->user;
+		$cat="";
+		if($this->categorie!==null)
+			$cat=$this->categorie;
+		$stat="";
+		if($this->statut!==null)
+			$stat=$this->statut;
+			return $this->titre." - ".$cat." - ".$stat;
+			
 	}
 	public function getMessages() {
 		return $this->messages;
