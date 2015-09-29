@@ -37,8 +37,17 @@ class _DefaultController extends BaseController {
 			$this->_showDisplayedMessage($message);
 		}
 		$objects=DAO::getAll($this->model);
+		
 		echo "<table class='table table-striped'>";
-		echo "<thead><tr> " .$this->model." Nouveau ".$this->NombreTicket()." </tr></thead>";
+		echo "<thead><tr><th>Mes tickets</th><th>Nombre</th></tr></thead>";
+		echo "<tbody><tr><td><a href= '".$baseHref."/viewA/".$this->afficherNouveau()."'>Nouveau<a></td><td>".$this->NombreTicketNouveau()."</td></tr>
+				<tr><td><a href= '".$baseHref."/viewA/".$this->afficherNouveau()."'>En attente<a></td><td>".$this->NombreTicketAttente()."</td></tr>
+				<tr><td><a href= '".$baseHref."/viewA/".$this->afficherNouveau()."'>Attribué<a></td><td>".$this->NombreTicketAttribuer()."</td></tr>
+				<tr><td><a href= '".$baseHref."/viewA/".$this->afficherNouveau()."'>Resolu<a></td><td>".$this->NombreTicketResolu()."</td></tr>";
+				
+		
+		echo "<table class='table table-striped'>";
+		echo "<thead><tr> " .$this->model."</thead>";
 		echo "<tbody>";
 		foreach ($objects as $object){
 		
@@ -223,8 +232,28 @@ class _DefaultController extends BaseController {
 		$this->_showMessage($message,"info",$timerInterval,$dismissable);
 	}
 
-	public function NombreTicket() {
-		echo DAO::$db->query("SELECT Count(id) AS nb FROM `ticket` WHERE idStatut =1")->fetchColumn();
+	public function NombreTicketNouveau() {
+		return DAO::$db->query("SELECT Count(id) AS nb FROM `ticket` WHERE idStatut =1")->fetchColumn();
+	
+	}
+	
+	public function NombreTicketAttente() {
+		return DAO::$db->query("SELECT Count(id) AS nb FROM `ticket` WHERE idStatut =3")->fetchColumn();
+	
+	}
+	
+	public function NombreTicketAttribuer() {
+		return DAO::$db->query("SELECT Count(id) AS nb FROM `ticket` WHERE idStatut =2")->fetchColumn();
+	
+	}
+	
+	public function NombreTicketResolu() {
+		return DAO::$db->query("SELECT Count(id) AS nb FROM `ticket` WHERE idStatut =4")->fetchColumn();
+	
+	}
+	
+	public function afficherNouveau() {
+		return DAO::$db->query("SELECT Count(id) AS nb FROM `ticket` WHERE idStatut =1")->fetchColumn();
 	
 	}
 }
