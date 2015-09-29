@@ -38,6 +38,7 @@ class Ticket extends Base {
 	 * @OneToMany(mappedBy="ticket",className="Message")
 	 */
 	private $messages;
+	
 	public function getId() {
 		return $this->id;
 	}
@@ -118,4 +119,6 @@ class Ticket extends Base {
 		$this->messages = $messages;
 		return $this;
 	}
+	
+	
 }
