@@ -39,12 +39,14 @@ class _DefaultController extends BaseController {
 		$objects=DAO::getAll($this->model);
 		
 		echo "<table class='table table-striped'>";
+		
+		
 		echo "<thead><tr><th>Mes tickets</th><th>Nombre</th></tr></thead>";
-		echo "<tbody><tr><td><a href= '".$baseHref."/newT/".$this->afficherNouveau()."'>Nouveau<a></td><td>".$this->NombreTicketNouveau()."</td></tr>
-				<tr><td><a href= '".$baseHref."/viewA/".$this->afficherNouveau()."'>En attente<a></td><td>".$this->NombreTicketAttente()."</td></tr>
-				<tr><td><a href= '".$baseHref."/viewA/".$this->afficherNouveau()."'>Attribué<a></td><td>".$this->NombreTicketAttribuer()."</td></tr>
-				<tr><td><a href= '".$baseHref."/viewA/".$this->afficherNouveau()."'>Resolu<a></td><td>".$this->NombreTicketResolu()."</td></tr>";
-				
+		echo "<tbody><tr><td>Nouveau</td><td>".$this->NombreTicketNouveau()."</td></tr>
+				<tr><td>En attente</td><td>".$this->NombreTicketAttente()."</td></tr>
+				<tr><td>Attribué</td><td>".$this->NombreTicketAttribuer()."</td></tr>
+				<tr><td>Resolu</td><td>".$this->NombreTicketResolu()."</td></tr>";
+		
 		
 		echo "<table class='table table-striped'>";
 		echo "<thead><tr> " .$this->model."</thead>";
