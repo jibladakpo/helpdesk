@@ -77,8 +77,12 @@ class Tickets extends \_DefaultController {
 	public function viewA($id=NULL){
 		$ticket=$this->getInstance($id);
 		$this->loadView("ticket/viewArticle",array("ticket"=>$ticket));
+	}
 	
-
+	public function newT() {
+		
+		return 	$this->loadView("ticket/newT");
+	
 	}
 
 	/* (non-PHPdoc)
