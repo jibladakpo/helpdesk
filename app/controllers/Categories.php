@@ -25,6 +25,17 @@ class Categories extends \_DefaultController {
 		$list=Gui::select($categories,$idParent,"Sélectionner une catégorie parente...");
 		$this->loadView("categorie/vAdd",array("select"=>$list,"categorie"=>$object));
 	}
+	
+	public function frmUpdate($id=NULL){
+		$object=$this->getInstance($id);
+		$categories=DAO::getAll("Categorie");
+		$idParent=-1;
+		if(null!==$object->getCategorie()){
+			$idParent=$object->getCategorie()->getId();
+		}
+		$list=Gui::select($categories,$idParent,"Sélectionner une catégorie parente...");
+		$this->loadView("categorie/vUpdate",array("select"=>$list,"categorie"=>$object));
+	}
 
 	/* (non-PHPdoc)
 	 * @see _DefaultController::setValuesToObject()

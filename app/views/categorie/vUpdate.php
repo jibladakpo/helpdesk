@@ -1,6 +1,6 @@
 <form method="post" action="categories/update">
 <fieldset>
-<legend>Ajouter une catégorie</legend>
+<legend>Modifier une catégorie</legend>
 <div class="alert alert-info">Catégorie : <?php echo $categorie->toString()?></div>
 <div class="form-group">
 	<input type="hidden" name="id" value="<?php echo $categorie->getId()?>">
@@ -10,7 +10,7 @@
 	</select>
 </div>
 <div class="form-group">
-	<input type="submit" value="Valider" class="btn btn-default">
+	<input type="submit" value="Modifier" class="btn btn-default">
 	<a class="btn btn-default" href="<?php echo $config["siteUrl"]?>categories">Annuler</a>
 </div>
 </fieldset>

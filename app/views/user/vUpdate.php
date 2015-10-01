@@ -1,6 +1,6 @@
 <form method="post" action="users/update">
 <fieldset>
-<legend>Ajouter un utilisateur</legend>
+<legend>Modifier un utilisateur</legend>
 <div class="alert alert-info">Utilisateur : <?php echo $user->toString()?></div>
 <div class="form-group">
 	<input type="hidden" name="id" value="<?php echo $user->getId()?>">
@@ -12,7 +12,7 @@
 	</div>
 </div>
 <div class="form-group">
-	<input type="submit" value="Valider" class="btn btn-default">
+	<input type="submit" value="Modifier" class="btn btn-default">
 	<a class="btn btn-default" href="<?php echo $config["siteUrl"]?>users">Annuler</a>
 </div>
 </fieldset>

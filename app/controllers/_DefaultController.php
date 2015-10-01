@@ -38,6 +38,7 @@ class _DefaultController extends BaseController {
 		}
 		$objects=DAO::getAll($this->model);
 		
+		if($this->title=="Tickets"){
 		echo "<table class='table table-striped'>";
 		
 		
@@ -46,6 +47,7 @@ class _DefaultController extends BaseController {
 				<tr><td>En attente</td><td>".$this->NombreTicketAttente()."</td></tr>
 				<tr><td>Attribué</td><td>".$this->NombreTicketAttribuer()."</td></tr>
 				<tr><td>Resolu</td><td>".$this->NombreTicketResolu()."</td></tr></tbody></table>";
+		}
 			
 		
 		echo "<table class='table table-striped'>";
