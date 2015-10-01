@@ -45,7 +45,7 @@ class _DefaultController extends BaseController {
 		echo "<tbody><tr><td>Nouveau</td><td>".$this->NombreTicketNouveau()."</td></tr>
 				<tr><td>En attente</td><td>".$this->NombreTicketAttente()."</td></tr>
 				<tr><td>Attribué</td><td>".$this->NombreTicketAttribuer()."</td></tr>
-				<tr><td>Resolu</td><td>".$this->NombreTicketResolu()."</td></tr>";
+				<tr><td>Resolu</td><td>".$this->NombreTicketResolu()."</td></tr></tbody></table>";
 			
 		
 		echo "<table class='table table-striped'>";
