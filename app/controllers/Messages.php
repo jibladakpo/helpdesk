@@ -27,6 +27,17 @@ class Messages extends \_DefaultController {
 		$this->loadView("message/vadd",array("message"=>$message,"tickets"=>$tickets));
 	}
 	
+	public function frmUpdate($id = NULL){
+		$message=$this->getInstance($id);
+		if(isset($id)){
+			$idTicket=$message->getTicket()->getId();
+		}else{
+			$idTicket=-1;
+		}
+		$tickets=DAO::getAll("Ticket");
+		$this->loadView("message/vUpdate",array("message"=>$message,"tickets"=>$tickets));
+	}
+	
 	protected function setValuesToObject(&$object){
 		parent::setValuesToObject($object);
 		$ticket=DAO::getOne("Ticket", $_POST['idTicket']);
