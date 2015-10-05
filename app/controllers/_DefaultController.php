@@ -39,14 +39,13 @@ class _DefaultController extends BaseController {
 		$objects=DAO::getAll($this->model);
 		
 		if($this->title=="Tickets"){
-		echo "<table class='table table-striped'>";
+		echo "<table class='table table-condensed'>";		
 		
-		
-		echo "<thead><tr><th>Mes tickets</th><th>Nombre</th></tr></thead>";
-		echo "<tbody><tr><td>Nouveau</td><td>".$this->NombreTicketNouveau()."</td></tr>
-				<tr><td>En attente</td><td>".$this->NombreTicketAttente()."</td></tr>
-				<tr><td>Attribué</td><td>".$this->NombreTicketAttribuer()."</td></tr>
-				<tr><td>Resolu</td><td>".$this->NombreTicketResolu()."</td></tr></tbody></table>";
+		echo "<thead><tr><th>Mes tickets</th><th>Nombre</th></tr></thead>".
+			 "<tbody><tr class='info'><td>Nouveau</td><td>".$this->NombreTicketNouveau()."</td></tr>
+				<tr class='warning'><td>En attente</td><td>".$this->NombreTicketAttente()."</td></tr>
+				<tr class='active'><td>Attribué</td><td>".$this->NombreTicketAttribuer()."</td></tr>
+				<tr class='success'><td>Resolu</td><td>".$this->NombreTicketResolu()."</td></tr></tbody></table>";
 		}
 			
 		

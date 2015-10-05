@@ -21,7 +21,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#" target="_self">HelpDesk</a>
+				<a class="navbar-brand" href="<?php echo $config["siteUrl"]?>" target="_self">HelpDesk</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
