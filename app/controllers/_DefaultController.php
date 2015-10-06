@@ -41,7 +41,7 @@ class _DefaultController extends BaseController {
 		if($this->title=="Tickets"){
 		echo "<table class='table table-condensed'>";		
 		
-		echo "<thead><tr><th>Mes tickets</th><th>Nombre</th></tr></thead>".
+		echo "<thead><tr><th>Mes tickets</th><th>Nombres</th></tr></thead>".
 			 "<tbody><tr class='info'><td>Nouveau</td><td>".$this->NombreTicketNouveau()."</td></tr>
 				<tr class='warning'><td>En attente</td><td>".$this->NombreTicketAttente()."</td></tr>
 				<tr class='active'><td>Attribué</td><td>".$this->NombreTicketAttribuer()."</td></tr>
