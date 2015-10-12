@@ -7,7 +7,7 @@ class HomeTest extends AjaxUnitTest {
 	}
 	public function testDefault(){
 		SeleniumTest::$webDriver->manage()->timeouts()->implicitlyWait(5);
-		$this->assertPageContainsText('HelpDesk');
+		$this->assertPageContainsText('helpdesk');
 		$this->assertTrue($this->elementExists("#response"));
 	}
 }

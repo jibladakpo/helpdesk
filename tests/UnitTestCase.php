@@ -4,7 +4,7 @@ abstract class UnitTestCase extends \PHPUnit_Framework_TestCase {
     /**
      * @var bool
      */
-    private $_loaded = false;
+    private $_loaded = true;
 
     /**
      * Default fixture for each test
