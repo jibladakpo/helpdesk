@@ -24,7 +24,7 @@ class DAOTest extends \PHPUnit_Framework_TestCase{
 		$this->assertEquals($objects[0]->getId(), $o->getId());
 	}
 	public function testLoadModels(){
-		$models=["Ticket","Faq","Message","Statut","User","Categorie"];
+		$models=["ticket","Faq","Message","Statut","User","Categorie"];
 		foreach ($models as $model){
 			$this->loadOne($model);
 		}
