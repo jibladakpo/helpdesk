@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="true">
-    <testsuite name="Helpdesk - Testsuite">
+    <testsuite name="helpdesk - Testsuite">
         <directory>./</directory>
     </testsuite>
 </phpunit>
