@@ -34,4 +34,9 @@ class Users extends \_DefaultController {
 	public function tickets(){
 		$this->forward("tickets");
 	}
+	
+	public function view($id=NULL){
+		$user=$this->getInstance($id);
+		$this->loadView("user/account",array("user"=>$user));
+	}
 }

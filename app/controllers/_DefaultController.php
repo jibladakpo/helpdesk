@@ -46,6 +46,7 @@ class _DefaultController extends BaseController {
 				<tr class='warning'><td>En attente</td><td>".$this->NombreTicketAttente()."</td></tr>
 				<tr class='active'><td>Attribué</td><td>".$this->NombreTicketAttribuer()."</td></tr>
 				<tr class='success'><td>Resolu</td><td>".$this->NombreTicketResolu()."</td></tr></tbody></table>";
+		
 		}
 			
 		
@@ -56,7 +57,7 @@ class _DefaultController extends BaseController {
 		
 			echo "<tr>";
 
-			echo "<td><a href= '".$baseHref."/viewA/".$object->getId()."'>$object</a> </td>";
+			echo "<td><a href= '".$baseHref."/view/".$object->getId()."'>$object</a> </td>";
 			echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>".
 			"<td class='td-center'><a class='btn btn-warning btn-xs' href='".$baseHref."/delete/".$object->getId()."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a></td>";
 			

@@ -58,7 +58,7 @@ class Faqs extends \_DefaultController {
 		$listCat=Gui::select($categories,$cat,"Sélectionner une catégorie ...");
 		$this->loadView("faq/vUpdate",array("faq"=>$faq,"listCat"=>$listCat));
 	}
-	public function viewA($id=NULL){
+	public function view($id=NULL){
 		$ticket=$this->getInstance($id);
 		$this->loadView("faq/viewArticleF",array("ticket"=>$ticket));
 	

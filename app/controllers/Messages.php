@@ -54,4 +54,9 @@ class Messages extends \_DefaultController {
 		$this->messageWarning("Vous devez vous connecter pour acceder à ce module.<br>".Auth::getInfoUser("warning"));
 		$this->finalize();
 	}
+	
+	public function view($id=NULL){
+		$message=$this->getInstance($id);
+		$this->loadView("message/viewMessage",array("messaage"=>$message));
+	}
 }
