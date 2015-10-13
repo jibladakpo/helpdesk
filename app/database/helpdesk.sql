@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `categorie`
 --
 
-CREATE TABLE IF NOT EXISTS `categorie` (
+CREATE TABLE IF NOT EXISTS `Categorie` (
   `id` int(11) NOT NULL,
   `libelle` varchar(100) NOT NULL,
   `idCategorie` int(11) DEFAULT NULL
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 -- Contenu de la table `categorie`
 --
 
-INSERT INTO `categorie` (`id`, `libelle`, `idCategorie`) VALUES
+INSERT INTO `Categorie` (`id`, `libelle`, `idCategorie`) VALUES
 (1, 'Réseau', NULL),
 (2, 'Routage', 1),
 (3, 'Serveurs', 1),
@@ -53,7 +53,7 @@ INSERT INTO `categorie` (`id`, `libelle`, `idCategorie`) VALUES
 -- Structure de la table `faq`
 --
 
-CREATE TABLE IF NOT EXISTS `faq` (
+CREATE TABLE IF NOT EXISTS `Faq` (
   `id` int(11) NOT NULL,
   `titre` varchar(100) NOT NULL,
   `contenu` text NOT NULL,
