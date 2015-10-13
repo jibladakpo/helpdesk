@@ -45,7 +45,7 @@ class _DefaultController extends BaseController {
 			 "<tbody><tr class='info'><td>Nouveau</td><td>".$this->NombreTicketNouveau()."</td></tr>
 				<tr class='warning'><td>En attente</td><td>".$this->NombreTicketAttente()."</td></tr>
 				<tr class='active'><td>Attribué</td><td>".$this->NombreTicketAttribuer()."</td></tr>
-				<tr class='success'><td>Resolu</td><td>".$this->NombreTicketResolu()."</td></tr></tbody></table>";
+				<tr class='success'><td>Résolu</td><td>".$this->NombreTicketResolu()."</td></tr></tbody></table>";
 		
 		}
 			
