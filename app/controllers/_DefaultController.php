@@ -36,19 +36,7 @@ class _DefaultController extends BaseController {
 			$message->setTimerInterval($this->messageTimerInterval);
 			$this->_showDisplayedMessage($message);
 		}
-		$objects=DAO::getAll($this->model);
-		
-		if($this->title=="Tickets"){
-		echo "<table class='table table-condensed'>";		
-		
-		echo "<thead><tr><th>Mes tickets</th><th>Nombres</th></tr></thead>".
-			 "<tbody><tr class='info'><td>Nouveau</td><td>".$this->NombreTicketNouveau()."</td></tr>
-				<tr class='warning'><td>En attente</td><td>".$this->NombreTicketAttente()."</td></tr>
-				<tr class='active'><td>Attribué</td><td>".$this->NombreTicketAttribuer()."</td></tr>
-				<tr class='success'><td>Résolu</td><td>".$this->NombreTicketResolu()."</td></tr></tbody></table>";
-		
-		}
-			
+		$objects=DAO::getAll($this->model);			
 		
 		echo "<table class='table table-striped'>";
 		echo "<thead><tr> " .$this->model."</thead>";
