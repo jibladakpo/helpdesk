@@ -1,9 +1,6 @@
 <div class="container">
   <form class="form-horizontal" role="form">
     <div class="form-group">
-    
-    <label><h1>Connexion</h1></label>
-    
       <label class="control-label col-sm-2" for="email">Email:</label>
       <div class="col-sm-10">
         <input type="email" class="form-control" id="email" placeholder="Enter email">
