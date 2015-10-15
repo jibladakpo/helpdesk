@@ -16,11 +16,21 @@ class DefaultC extends BaseController {
 	 * @see BaseController::index()
 	 */
 	public function index() {
+		if(Auth::isAuth()){
 		$this->loadView("main/vHeader",array("infoUser"=>Auth::getInfoUser()));
-		$this->loadView("main/frm_log");
 		$this->loadView("main/vFooter");
+		$this->loadView("main/vDefault");
 		Jquery::getOn("click", ".btAjax", "sample/ajaxSample","#response");
 		echo Jquery::compile();
+		
+		}else{
+			
+			$this->loadView("main/vHeader",array("infoUser"=>Auth::getInfoUser()));
+			$this->loadView("main/frm_log");
+			$this->loadView("main/vFooter");
+			Jquery::getOn("click", ".btAjax", "sample/ajaxSample","#response");
+			echo Jquery::compile();	
+		}
 	}
 
 	/**

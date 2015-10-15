@@ -26,6 +26,7 @@
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="collapse-mainNav">
+			<?php if(Auth::isAuth()){?>
 				<ul class="nav navbar-nav navbar-nav">
 					<li id='mainNav-navzone-1-li-1'><a id='mainNav-navzone-1-link-1'
 						href="Tickets/frm">Créer un ticket</a></li>
@@ -33,6 +34,7 @@
 						href="tickets">Tickets</a></li>
 					<li id='mainNav-navzone-1-li-3'><a id='mainNav-navzone-1-link-3'
 						href="faqs">Foire aux questions</a></li>
+				<?php }?>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -56,6 +58,7 @@
 	<div class="second-header"></div>
 	<div class="container">
 		<ol class="breadcrumb">
+		<?php if(Auth::isAuth()){?>
 			<li><a href="<?php echo $config["siteUrl"]?>"><span class="glyphicon glyphicon-home"
 					aria-hidden="true"></span>&nbsp;Accueil</a></li>
 			<li><a id='mainNav-navzone-1-link-2' href="users"><span class="glyphicon glyphicon-user"
@@ -66,5 +69,6 @@
 					aria-hidden="true"></span>&nbsp;Messages</a></li>
 			<li><a id='mainNav-navzone-1-link-3' href="faqs"><span class="glyphicon glyphicon-book"
 					aria-hidden="true"></span>&nbsp;FAQ</a></li>
+			<?php }?>
 		</ol>
 	</div>
