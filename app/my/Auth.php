@@ -40,6 +40,15 @@ class Auth {
 			return false;
 		}
 	}
+	
+	public static function isTech(){
+		$user=self::getUser();
+		if($user instanceof User){
+			return $user->getTech();
+		}else{
+			return false;
+		}
+	}
 
 	/**
 	 * Retourne la zone d'information au format HTML affichant l'utilisateur connecté<br>
@@ -58,6 +67,7 @@ class Auth {
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="defaultC/asAdmin"><span class="glyphicon glyphicon-king" aria-hidden="true"></span>&nbsp;Administrateur</a></li>
 								<li><a href="defaultC/asUser"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Utilisateur</a></li>
+								<li><a href="defaultC/asTech"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Technicien</a></li>
 							</ul>
 						</div>';
 		}

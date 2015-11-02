@@ -49,6 +49,15 @@ class User extends Base {
 		$this->admin = $admin;
 		return $this;
 	}
+	
+	public function getTech(){
+		return $this->admin;
+	}
+	
+	public function setTech($tech) {
+		$this->admin = $tech;
+		return $this;
+	}
 	public function toString() {
 		$uType = "Utilisateur";
 		if ($this->admin) {

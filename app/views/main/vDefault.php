@@ -17,6 +17,7 @@
 				<legend>Connexion</legend>
 					<a class="btn btn-default" href="defaultc/asAdmin">Connexion en tant qu'admin</a>
 					<a class="btn btn-default" href="defaultc/asUser">Connexion en tant que user</a>
+					<a class="btn btn-default" href="defaultc/asTech">Connexion en tant que technicien</a>
 					<a class="btn btn-warning" href="defaultc/disconnect">Déconnexion</a>
 			</fieldset>
 			<fieldset>
