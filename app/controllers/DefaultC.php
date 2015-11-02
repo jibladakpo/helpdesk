@@ -67,14 +67,19 @@ class DefaultC extends BaseController {
 		$email=$_POST["email"];
 		$password=$_POST["pwd"];
 	
-
+	if($email&&$password){
 		$_SESSION["user"]=DAO::getOne("User","mail='".$email."' and password='".sha1($password)."'");
 		$_SESSION['KCFINDER'] = array(
 				'disabled' => true
 		);
 		$this->index();
+	}else{
+		$info['error']='Erreur d\'identification, Veuillez réessayer s\'il vous plaît !';
+		$this->loadView("main/vHeader",array("infoUser"=>Auth::getInfoUser()));
+		$this->loadView("main/frm_log",$info);
+		$this->loadView("main/vFooter");
 	}
-
+	}
 	/**
 	 * Déconnecte l'utilisateur actuel
 	 */

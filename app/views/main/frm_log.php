@@ -1,6 +1,12 @@
+
 <div class="container">
   <form method="post" class="form-horizontal" action="DefaultC/connect" role="form">
     <div class="form-group">
+     <?php if(isset($error)):?>
+ <div class="alert alert-danger"> <?php echo $error;?>
+ <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+ </div>
+ <?php endif;?>
       <label class="control-label col-sm-2" for="email">Email:</label>
       <div class="col-sm-10">
         <input type="email" class="form-control" name="email" id="email" placeholder="Votre email">
