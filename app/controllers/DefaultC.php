@@ -68,7 +68,7 @@ class DefaultC extends BaseController {
 		$password=$_POST["pwd"];
 	
 
-		$_SESSION["user"]=DAO::getOne("User","mail='".$email."' and password='".$password."'");
+		$_SESSION["user"]=DAO::getOne("User","mail='".$email."' and password='".sha1($password)."'");
 		$_SESSION['KCFINDER'] = array(
 				'disabled' => true
 		);

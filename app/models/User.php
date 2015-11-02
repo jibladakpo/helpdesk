@@ -32,7 +32,7 @@ class User extends Base {
 		return $this->password;
 	}
 	public function setPassword($password) {
-		$this->password = $password;
+		$this->password = sha1($password);
 		return $this;
 	}
 	public function getMail() {
