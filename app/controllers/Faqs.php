@@ -124,6 +124,5 @@ class Faqs extends \_DefaultController {
 		}
 		echo "</tbody>";
 		echo "</table>";
-		echo "<a class='btn btn-primary' href='".$config["siteUrl"].$baseHref."/frm'>Ajouter...</a>";
 	}
 }

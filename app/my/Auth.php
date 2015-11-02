@@ -1,4 +1,5 @@
 <?php
+use micro\orm\DAO;
 /**
  * Classe de gestion de l'authentification
  * @author jcheron
@@ -62,4 +63,5 @@ class Auth {
 		}
 		return $infoUser;
 	}
+	
 }

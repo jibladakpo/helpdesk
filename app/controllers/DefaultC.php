@@ -62,6 +62,18 @@ class DefaultC extends BaseController {
 		);
 		$this->index();
 	}
+	
+	public function connect(){
+		$email=$_POST["email"];
+		$password=$_POST["pwd"];
+	
+
+		$_SESSION["user"]=DAO::getOne("User","mail='".$email."' and password='".$password."'");
+		$_SESSION['KCFINDER'] = array(
+				'disabled' => true
+		);
+		$this->index();
+	}
 
 	/**
 	 * Déconnecte l'utilisateur actuel
