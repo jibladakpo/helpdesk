@@ -63,6 +63,17 @@ class DefaultC extends BaseController {
 		$this->index();
 	}
 	
+	/**
+	 * Connecte le premier technicien (non admin) trouvé dans la BDD
+	 */
+	public function asTech(){
+		$_SESSION["user"]=DAO::getOne("User", "admin=2");
+		$_SESSION['KCFINDER'] = array(
+				'disabled' => true
+		);
+		$this->index();
+	}
+	
 	public function connect(){
 		$email=$_POST["email"];
 		$password=$_POST["pwd"];

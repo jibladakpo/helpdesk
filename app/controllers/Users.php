@@ -29,7 +29,7 @@ class Users extends \_DefaultController {
 			$this->_showDisplayedMessage($message);
 		}
 		$objects=DAO::getAll($this->model);
-		var_dump($_SESSION);
+		
 	
 		echo "<table class='table table-striped'>";
 		echo "<thead><tr> " .$this->model."</thead>";
