@@ -46,6 +46,7 @@ class Users extends \_DefaultController {
 		}
 		echo "</tbody>";
 		echo "</table>";
+		if(Auth::isAdmin()==1){echo "<a class='btn btn-primary' href='".$config["siteUrl"].$baseHref."/frm'>Ajouter...</a>";}
 	}
 
 	public function frm($id=NULL){

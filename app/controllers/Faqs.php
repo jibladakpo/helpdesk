@@ -13,6 +13,40 @@ class Faqs extends \_DefaultController {
 		$this->title="Foire aux questions";
 		$this->model="Faq";
 	}
+	
+	/**
+	 * Affiche la liste des instances de la class du modèle associé $model
+	 * @see BaseController::index()
+	 */
+	public function index($message=null){
+		global $config;
+		$baseHref=get_class($this);
+		if(isset($message)){
+			if(is_string($message)){
+				$message=new DisplayedMessage($message);
+			}
+			$message->setTimerInterval($this->messageTimerInterval);
+			$this->_showDisplayedMessage($message);
+		}
+		$objects=DAO::getAll($this->model);
+	
+		echo "<table class='table table-striped'>";
+		echo "<thead><tr> " .$this->model."</thead>";
+		echo "<tbody>";
+		foreach ($objects as $object){
+	
+			echo "<tr>";
+	
+			echo "<td><a href= '".$baseHref."/view/".$object->getId()."'>$object</a> </td>";
+			if(Auth::isAdmin()==1){echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>".
+					"<td class='td-center'><a class='btn btn-warning btn-xs' href='".$baseHref."/delete/".$object->getId()."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a></td>";}
+	
+			echo "</tr>";
+		}
+		echo "</tbody>";
+		echo "</table>";
+		if(Auth::isAdmin()==1){echo "<a class='btn btn-primary' href='".$config["siteUrl"].$baseHref."/frm'>Ajouter...</a>";}
+	}
 
 	/* (non-PHPdoc)
 	 * @see _DefaultController::setValuesToObject()
@@ -91,38 +125,5 @@ class Faqs extends \_DefaultController {
 		$this->messageDanger("<strong>Autorisation refusée</strong>,<br>Merci de vous connecter pour accéder à ce module.&nbsp;".Auth::getInfoUser("danger"));
 		$this->finalize();
 		exit;
-	}
-	
-	/**
-	 * Affiche la liste des instances de la class du modèle associé $model
-	 * @see BaseController::index()
-	 */
-	public function index($message=null){
-		global $config;
-		$baseHref=get_class($this);
-		if(isset($message)){
-			if(is_string($message)){
-				$message=new DisplayedMessage($message);
-			}
-			$message->setTimerInterval($this->messageTimerInterval);
-			$this->_showDisplayedMessage($message);
-		}
-		$objects=DAO::getAll($this->model);
-	
-		echo "<table class='table table-striped'>";
-		echo "<thead><tr> " .$this->model."</thead>";
-		echo "<tbody>";
-		foreach ($objects as $object){
-	
-			echo "<tr>";
-	
-			echo "<td><a href= '".$baseHref."/view/".$object->getId()."'>$object</a> </td>";
-			if(Auth::isAdmin()==1){echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>".
-										"<td class='td-center'><a class='btn btn-warning btn-xs' href='".$baseHref."/delete/".$object->getId()."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a></td>";}
-				
-			echo "</tr>";
-		}
-		echo "</tbody>";
-		echo "</table>";
 	}
 }
