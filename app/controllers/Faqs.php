@@ -32,6 +32,14 @@ class Faqs extends \_DefaultController {
 	
 		echo "<table class='table table-striped'>";
 		echo "<thead><tr> " .$this->model."</thead>";
+		echo "<div id='searchbar'>
+		
+                <form method='get' action='127.0.0.1/helpdesk/views/faqs/search.php'>
+               <input class='champ' type='text' value=''/>
+                    <input class='bouton' type='button' value='search ' />
+           
+                </form>
+                </div><br>";
 		echo "<tbody>";
 		foreach ($objects as $object){
 	
