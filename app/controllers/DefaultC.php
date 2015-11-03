@@ -91,6 +91,14 @@ class DefaultC extends BaseController {
 		$this->loadView("main/vFooter");
 	}
 	}
+	
+	public function lost(){
+		
+		$this->loadView("main/vHeader",array("infoUser"=>Auth::getInfoUser()));
+		$this->loadView("main/lost_mdp");
+		$this->loadView("main/vFooter");
+		Jquery::getOn("click", ".btAjax", "sample/ajaxSample","#response");
+	}
 	/**
 	 * Déconnecte l'utilisateur actuel
 	 */

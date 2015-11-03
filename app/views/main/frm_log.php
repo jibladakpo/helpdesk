@@ -2,6 +2,7 @@
 <div class="container">
   <form method="post" class="form-horizontal" action="DefaultC/connect" role="form">
     <div class="form-group">
+    <h2>Connexion</h2>
      <?php if(isset($error)):?>
  <div class="alert alert-danger"> <?php echo $error;?>
  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -23,6 +24,7 @@
         <div class="checkbox">
           <label><input type="checkbox"> Remember me</label>
         </div>
+        <a href="DefaultC/lost">Mot de passe perdu ?</a>
       </div>
     </div>
     <div class="form-group">        
