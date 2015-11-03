@@ -51,8 +51,9 @@ class Tickets extends \_DefaultController {
 			echo "<tr>";
 	
 			echo "<td><a href= '".$baseHref."/view/".$object->getId()."'>$object</a> </td>";
-			echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>".
-					"<td class='td-center'><a class='btn btn-warning btn-xs' href='".$baseHref."/delete/".$object->getId()."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a></td>";
+			echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>";
+			if(Auth::isAdmin()==1){ echo "<td class='td-center'><a class='btn btn-default btn-xs' title='Modifier le statut' href='".$baseHref."/frmUstat/".$object->getId()."'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></a></td>".
+					"<td class='td-center'><a class='btn btn-warning btn-xs' href='".$baseHref."/delete/".$object->getId()."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a></td>";}
 	
 			echo "</tr>";
 		}
@@ -120,6 +121,21 @@ class Tickets extends \_DefaultController {
 		$this->loadView("ticket/vUpdate",array("ticket"=>$ticket,"listCat"=>$listCat,"listType"=>$listType,"listStatut"=>$listStatut));
 		echo Jquery::execute("CKEDITOR.replace( 'description');");
 	}
+	
+	public function frmUstat($id=NULL){
+		$ticket=$this->getInstance($id);
+		$statuts = DAO::getAll("statut");
+	
+		if($ticket->getStatut()==null){
+			$stt=-1;
+		}else{
+			$stt=$ticket->getStatut()->getId();
+		}
+		$listStatut=Gui::select($statuts,$stt,"Modifier le statut ...");
+	
+		$this->loadView("ticket/vUstat",array("ticket"=>$ticket,"listStatut"=>$listStatut));
+	}
+	
 	public function view($id=NULL){
 		$ticket=$this->getInstance($id);
 		$this->loadView("ticket/viewArticle",array("ticket"=>$ticket));
@@ -136,10 +152,12 @@ class Tickets extends \_DefaultController {
 	 */
 	protected function setValuesToObject(&$object) {
 		parent::setValuesToObject($object);
-		$categorie=DAO::getOne("Categorie", $_POST["idCategorie"]);
-		$object->setCategorie($categorie);
+		if(isset($categorie)){$categorie=DAO::getOne("Categorie", $_POST["idCategorie"]);
+		$object->setCategorie($categorie);}
+		
 		$statut=DAO::getOne("Statut", $_POST["idStatut"]);
 		$object->setStatut($statut);
+		
 		$user=DAO::getOne("User", $_POST["idUser"]);
 		$object->setUser($user);
 	}
