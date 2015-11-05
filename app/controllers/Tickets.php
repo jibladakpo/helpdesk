@@ -195,7 +195,7 @@ class Tickets extends \_DefaultController {
 	 */
 	public function onInvalidControl() {
 		$this->initialize();
-		$this->messageDanger("<strong>Autorisation refusée</strong>,<br>Merci de vous connecter pour accéder à ce module.&nbsp;".Auth::getInfoUser("danger"));
+		$this->messageDanger("<strong>Autorisation refusée</strong>,<br>Merci de vous connecter pour accéder à ce module.&nbsp;".$this->loadView("main/frm_log"));
 		$this->finalize();
 		exit;
 	}

@@ -77,4 +77,16 @@ class Users extends \_DefaultController {
 		$user=$this->getInstance($id);
 		$this->loadView("user/account",array("user"=>$user));
 	}
+	
+	public function isValid(){
+		return Auth::isAuth();
+	
+	}
+	
+	public function onInvalidControl(){
+		$this->initialize();
+		$this->messageDanger("<strong>Autorisation refusée</strong>,<br>Merci de vous connecter pour accéder à ce module.&nbsp;".$this->loadView("main/frm_log"));
+		$this->finalize();
+		exit;
+	}
 }

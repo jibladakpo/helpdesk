@@ -57,12 +57,14 @@ class Messages extends \_DefaultController {
 		echo "</tbody>";
 		echo "</table>";
 		echo "<a class='btn btn-primary' href='".$config["siteUrl"].$baseHref."/frm'>Ajouter...</a>";
+		
 	}
 	
 	/* (non-PHPdoc)
 	 *@see _DefaultController::frm()
 	 */
 	public function frm($id = NULL){
+
 		$message=$this->getInstance($id);
 		if(isset($id)){
 			$idTicket=$message->getTicket()->getId();
@@ -71,9 +73,11 @@ class Messages extends \_DefaultController {
 		}
 		$tickets=DAO::getAll("Ticket");
 		$this->loadView("message/vadd",array("message"=>$message,"tickets"=>$tickets));
+		
 	}
 	
 	public function frmUpdate($id = NULL){
+
 		$message=$this->getInstance($id);
 		if(isset($id)){
 			$idTicket=$message->getTicket()->getId();
@@ -82,6 +86,7 @@ class Messages extends \_DefaultController {
 		}
 		$tickets=DAO::getAll("Ticket");
 		$this->loadView("message/vUpdate",array("message"=>$message,"tickets"=>$tickets));
+		
 	}
 	
 	protected function setValuesToObject(&$object){
@@ -97,12 +102,16 @@ class Messages extends \_DefaultController {
 	}
 	
 	public function onInvalidControl(){
-		$this->messageWarning("Vous devez vous connecter pour acceder à ce module.<br>".Auth::getInfoUser("warning"));
+		$this->initialize();
+		$this->messageDanger("<strong>Autorisation refusée</strong>,<br>Merci de vous connecter pour accéder à ce module.&nbsp;".$this->loadView("main/frm_log"));
 		$this->finalize();
+		exit;
 	}
 	
 	public function view($id=NULL){
+		if(Auth::isAuth()){
 		$message=$this->getInstance($id);
 		$this->loadView("message/viewMessage",array("message"=>$message));
+		}
 	}
 }

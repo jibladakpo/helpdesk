@@ -48,4 +48,16 @@ class Categories extends \_DefaultController {
 		}
 
 	}
+	
+	public function isValid(){
+		return Auth::isAuth();
+	
+	}
+	
+	public function onInvalidControl(){
+		$this->initialize();
+		$this->messageDanger("<strong>Autorisation refusée</strong>,<br>Merci de vous connecter pour accéder à ce module.&nbsp;".$this->loadView("main/frm_log"));
+		$this->finalize();
+		exit;
+	}
 }
