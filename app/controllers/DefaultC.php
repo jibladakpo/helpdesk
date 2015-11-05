@@ -81,6 +81,7 @@ class DefaultC extends BaseController {
 	if($email&&$password){
 		$_SESSION["user"]=DAO::getOne("User","mail='".$email."' and password='".sha1($password)."'");
 		$_SESSION['KCFINDER'] = array(
+				'mail' => $email,
 				'disabled' => true
 		);
 		$this->index();

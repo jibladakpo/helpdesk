@@ -103,6 +103,6 @@ class Messages extends \_DefaultController {
 	
 	public function view($id=NULL){
 		$message=$this->getInstance($id);
-		$this->loadView("message/viewMessage",array("messaage"=>$message));
+		$this->loadView("message/viewMessage",array("message"=>$message));
 	}
 }

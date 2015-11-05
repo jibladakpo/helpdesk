@@ -67,7 +67,7 @@ class Auth {
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="defaultC/asAdmin"><span class="glyphicon glyphicon-king" aria-hidden="true"></span>&nbsp;Administrateur</a></li>
 								<li><a href="defaultC/asUser"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Utilisateur</a></li>
-								<li><a href="defaultC/asTech"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Technicien</a></li>
+								<li><a href="defaultC/asTech"><span class="glyphicon glyphicon-pawn" aria-hidden="true"></span>&nbsp;Technicien</a></li>
 							</ul>
 						</div>';
 		}
