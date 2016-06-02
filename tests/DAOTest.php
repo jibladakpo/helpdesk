@@ -1,32 +1,30 @@
 <?php
 
-use micro\orm\DAO;
-class DAOTest extends \PHPUnit_Framework_TestCase{
 
+class DAOTest extends \PHPUnit_Framework_TestCase{
+	private $variable;
 	/* (non-PHPdoc)
-	 * @see PHPUnit_Framework_TestCase::setUp()
+	 * @see <span class="search_hit">PHPUnit</span>_Framework_TestCase::setUp()
 	 */
 	protected function setUp() {
-		global $config;
-		Logger::init();
-
-		extract($config["database"]);
-		$db=$config["database"];
-		DAO::connect($db["dbName"],@$db["serverName"],@$db["port"],@$db["user"],@$db["password"]);
+		$this->variable=1;
 	}
-
-	private function loadOne($className){
-		$objects=DAO::getAll($className);
-		$this->assertArrayHasKey(0, $objects);
-		$this->assertNotNull($objects[0]);
-		$o=DAO::getOne($className, $objects[0]->getId());
-		$this->assertNotNull($o);
-		$this->assertEquals($objects[0]->getId(), $o->getId());
-	}
-	public function testLoadModels(){
-		$models=["Ticket","Faq","Message","Statut","User","Categorie"];
-		foreach ($models as $model){
-			$this->loadOne($model);
+	
+	public function testIncVariable(){
+		$this->assertEquals($this->variable, 1);
+		for($i=0;$i<10;$i++){
+			$this->variable+=1;
 		}
+		$this->assertEquals(11, $this->variable);
 	}
-}
+	
+	public function testVariable(){
+		$this->assertEquals($this->variable, 1);
+	}
+	/* (non-PHPdoc)
+	 * @see <span class="search_hit">PHPUnit</span>_Framework_TestCase::tearDown()
+	 */
+	protected function tearDown() {
+		$this->variable=0;
+	}
+	}

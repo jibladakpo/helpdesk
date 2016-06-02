@@ -29,7 +29,7 @@ class Messages extends \_DefaultController {
 		}
 		$objects=DAO::getAll($this->model);
 	
-		if($this->title=="Tickets"){
+		if($this->title=="Messages"){
 			echo "<table class='table table-condensed'>";
 	
 			echo "<thead><tr><th>Mes tickets</th><th>Nombres</th></tr></thead>".

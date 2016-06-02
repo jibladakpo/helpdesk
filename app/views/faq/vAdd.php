@@ -10,8 +10,6 @@
 	<label for="description">Texte</label>
 	<textarea name="contenu" id="contenu" placeholder="Entrez le contenu" class="form-control ckeditor"><?php echo $faq->getContenu()?></textarea>
 </div>
-
-
 	
 <div class="form-group">
 

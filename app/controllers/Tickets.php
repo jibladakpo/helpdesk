@@ -152,8 +152,8 @@ class Tickets extends \_DefaultController {
 	 */
 	protected function setValuesToObject(&$object) {
 		parent::setValuesToObject($object);
-		if(isset($categorie)){$categorie=DAO::getOne("Categorie", $_POST["idCategorie"]);
-		$object->setCategorie($categorie);}
+		$categorie=DAO::getOne("Categorie", $_POST["idCategorie"]);
+		$object->setCategorie($categorie);
 		
 		$statut=DAO::getOne("Statut", $_POST["idStatut"]);
 		$object->setStatut($statut);
