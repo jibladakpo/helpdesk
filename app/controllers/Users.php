@@ -15,7 +15,7 @@ class Users extends \_DefaultController {
 		$this->title="Utilisateurs";
 		$this->model="User";
 	}
-	
+
 	/**
 	 * Affiche la liste des instances de la class du modèle associé $model
 	 * @see BaseController::index()
@@ -31,19 +31,19 @@ class Users extends \_DefaultController {
 			$this->_showDisplayedMessage($message);
 		}
 		$objects=DAO::getAll($this->model);
-		
-	
+
+
 		echo "<table class='table table-striped'>";
-		echo "<thead><tr> " .$this->model."</thead>";
+		echo "<thead><tr> ".$this->model."</thead>";
 		echo "<tbody>";
 		foreach ($objects as $object){
-	
+
 			echo "<tr>";
-	
+
 			echo "<td><a href= '".$baseHref."/view/".$object->getId()."'>$object</a> </td>";
 			if(Auth::isAdmin()==1){echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>".
 					"<td class='td-center'><a class='btn btn-warning btn-xs' href='".$baseHref."/delete/".$object->getId()."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a></td>";}
-	
+
 			echo "</tr>";
 		}
 		echo "</tbody>";
@@ -55,7 +55,7 @@ class Users extends \_DefaultController {
 		$user=$this->getInstance($id);
 		$this->loadView("user/vAdd",array("user"=>$user));
 	}
-	
+
 	public function frmUpdate($id=NULL){
 		$user=$this->getInstance($id);
 		$this->loadView("user/vUpdate",array("user"=>$user));
@@ -72,17 +72,16 @@ class Users extends \_DefaultController {
 	public function tickets(){
 		$this->forward("tickets");
 	}
-	
+
 	public function view($id=NULL){
 		$user=$this->getInstance($id);
 		$this->loadView("user/account",array("user"=>$user));
 	}
-	
+
 	public function isValid(){
 		return Auth::isAuth();
-	
 	}
-	
+
 	public function onInvalidControl(){
 		$this->initialize();
 		$this->messageDanger("<strong>Autorisation refusée</strong>,<br>Merci de vous connecter pour accéder à ce module.&nbsp;".$this->loadView("main/frm_log"));

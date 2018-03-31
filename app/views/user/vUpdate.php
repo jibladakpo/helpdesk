@@ -8,7 +8,8 @@
 	<input type="text" name="login" value="<?php echo $user->getLogin()?>" placeholder="Entrez un login" class="form-control">
 	<input type="password" name="password" value="<?php echo $user->getPassword()?>" placeholder="Entrez le mot de passe" class="form-control">
 	<div class="checkbox">
-		<label><input type="checkbox" name="admin" <?php echo ($user->getAdmin()?"checked":"")?> value="1">Administrateur ?</label>
+		<label class="radio-inline"><input type="checkbox" name="admin" <?php echo ($user->getAdmin()?"checked":"")?> value="1">Administrateur ?</label>
+		<label class="radio-inline"><input type="checkbox" name="admin" <?php echo ($user->getAdmin()?"checked":"")?> value="2">Technicien ?</label>
 	</div>
 </div>
 <div class="form-group">

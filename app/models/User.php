@@ -49,22 +49,22 @@ class User extends Base {
 		$this->admin = $admin;
 		return $this;
 	}
-	
+
 	public function getTech(){
 		return $this->admin;
 	}
-	
+
 	public function setTech($tech) {
 		$this->admin = $tech;
 		return $this;
 	}
 	public function toString() {
 		$uType = "Utilisateur";
-		if ($this->admin) {
+		if ($this->admin == 1) {
 			$uType = "Administrateur";
 		}
-		
-		else if ($this->admin) {
+
+		else if ($this->admin == 2) {
 			$uType = "Technicien";
 		}
 		return $this->mail . "-" . $this->login . " (" . $uType . ")";

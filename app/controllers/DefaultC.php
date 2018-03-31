@@ -19,17 +19,19 @@ class DefaultC extends BaseController {
 		if(Auth::isAuth()){
 		$this->loadView("main/vHeader",array("infoUser"=>Auth::getInfoUser()));
 		$this->loadView("main/vFooter");
+		if(Auth::isAdmin()==1){
 		$this->loadView("main/vDefault");
+		}
 		Jquery::getOn("click", ".btAjax", "sample/ajaxSample","#response");
 		echo Jquery::compile();
-		
+
 		}else{
-			
-			$this->loadView("main/vHeader",array("infoUser"=>Auth::getInfoUser()));
+
+			$this->loadView("main/vHeader",array("infoUser"=>""));
 			$this->loadView("main/frm_log");
 			$this->loadView("main/vFooter");
 			Jquery::getOn("click", ".btAjax", "sample/ajaxSample","#response");
-			echo Jquery::compile();	
+			echo Jquery::compile();
 		}
 	}
 
@@ -62,24 +64,26 @@ class DefaultC extends BaseController {
 		);
 		$this->index();
 	}
-	
+
 	/**
 	 * Connecte le premier technicien (non admin) trouvé dans la BDD
 	 */
 	public function asTech(){
 		$_SESSION["user"]=DAO::getOne("User", "admin=2");
 		$_SESSION['KCFINDER'] = array(
-				'disabled' => true
+				'disabled' => false
 		);
 		$this->index();
 	}
-	
+	/**
+	* Méthode connexion utilisateur
+	*/
 	public function connect(){
 		$email=$_POST["email"];
 		$password=$_POST["pwd"];
-	
+
 	if($email&&$password){
-		$_SESSION["user"]=DAO::getOne("User","mail='".$email."' and password='".sha1($password)."'");
+		$_SESSION["user"]=DAO::getOne("User","mail='".$email."' and password='".$password."'");
 		$_SESSION['KCFINDER'] = array(
 				'mail' => $email,
 				'disabled' => true
@@ -92,9 +96,9 @@ class DefaultC extends BaseController {
 		$this->loadView("main/vFooter");
 	}
 	}
-	
+
 	public function lost(){
-		
+
 		$this->loadView("main/vHeader",array("infoUser"=>Auth::getInfoUser()));
 		$this->loadView("main/lost_mdp");
 		$this->loadView("main/vFooter");
