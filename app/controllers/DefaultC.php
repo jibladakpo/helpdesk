@@ -17,7 +17,7 @@ class DefaultC extends BaseController {
 	 */
 	public function index() {
 		if(Auth::isAuth()){
-		$this->loadView("main/vHeader",array("infoUser"=>Auth::getInfoUser()));
+		$this->loadView("main/vHeader",array("infoUser"=>Auth::getInfoUser(),"id"=>Auth::getIdA()));
 		$this->loadView("main/vFooter");
 		if(Auth::isAdmin()==1){
 		$this->loadView("main/vDefault");
@@ -79,13 +79,13 @@ class DefaultC extends BaseController {
 	* Méthode connexion utilisateur
 	*/
 	public function connect(){
-		$email=$_POST["email"];
+		$login=$_POST["login"];
 		$password=$_POST["pwd"];
 
-	if($email&&$password){
-		$_SESSION["user"]=DAO::getOne("User","mail='".$email."' and password='".$password."'");
+	if($login&&$password){
+		$_SESSION["user"]=DAO::getOne("User","login='".$login."' and password='".$password."'");
 		$_SESSION['KCFINDER'] = array(
-				'mail' => $email,
+				'login' => $login,
 				'disabled' => true
 		);
 		$this->index();

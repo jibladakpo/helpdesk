@@ -19,6 +19,14 @@ class Auth {
 		return $user;
 	}
 
+	public static function getIdA(){
+		$user=self::getUser();
+		$id=$user->getId();
+		return $id;
+	}
+
+
+
 	/**
 	 * Retourne vrai si un utilisateur est connecté
 	 * @return boolean
@@ -40,7 +48,7 @@ class Auth {
 			return false;
 		}
 	}
-	
+
 	public static function isTech(){
 		$user=self::getUser();
 		if($user instanceof User){
@@ -73,5 +81,5 @@ class Auth {
 		}
 		return $infoUser;
 	}
-	
+
 }

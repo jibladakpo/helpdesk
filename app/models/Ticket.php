@@ -19,26 +19,26 @@ class Ticket extends Base {
 	 * @JoinColumn(name="idCategorie",className="Categorie",nullable=true)
 	 */
 	private $categorie;
-	
+
 	/**
 	 * @ManyToOne
 	 * @JoinColumn(name="idUser",className="User",nullable=false)
 	 */
 	private $user;
-	
-	
+
+
 	/**
 	 * @ManyToOne
 	 * @JoinColumn(name="idStatut",className="Statut",nullable=false)
 	 */
 	private $statut;
 	private $version;
-	
+
 	/**
 	 * @OneToMany(mappedBy="ticket",className="Message")
 	 */
 	private $messages;
-	
+
 	public function getId() {
 		return $this->id;
 	}
@@ -103,14 +103,17 @@ class Ticket extends Base {
 		return $this;
 	}
 	public function toString() {
+		$user="";
+		if($this->user!==null)
+			$user=$this->user;
 		$cat="";
 		if($this->categorie!==null)
 			$cat=$this->categorie;
 		$stat="";
 		if($this->statut!==null)
 			$stat=$this->statut;
-			return $this->titre." - ".$cat." - ".$stat;
-			
+			return $this->titre." - ".$user." - ".$cat." - ".$stat;
+
 	}
 	public function getMessages() {
 		return $this->messages;
@@ -119,6 +122,6 @@ class Ticket extends Base {
 		$this->messages = $messages;
 		return $this;
 	}
-	
-	
+
+
 }

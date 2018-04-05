@@ -8,6 +8,7 @@
 <script type="text/javascript" src="assets/js/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+<link rel="shortcut icon" type="image/png" href="assets/img/helpdesk.png">
 </head>
 <meta charset="UTF-8">
 <body>
@@ -61,8 +62,8 @@
 		<?php if(Auth::isAuth()){?>
 			<li><a href="<?php echo $config["siteUrl"]?>"><span class="glyphicon glyphicon-home"
 					aria-hidden="true"></span>&nbsp;Accueil</a></li>
-			<li><a id='mainNav-navzone-1-link-2' href="users"><span class="glyphicon glyphicon-user"
-					aria-hidden="true"></span>&nbsp;Mon compte</a></li>
+		<?php echo"	<li><a id='mainNav-navzone-1-link-2' href='users/view/".$id."'><span class='glyphicon glyphicon-user'
+					aria-hidden='true'></span>&nbsp;Mon compte</a></li> "?>
 			<li><a id='mainNav-navzone-1-link-2' href="tickets"><span class="glyphicon glyphicon-tags"
 					aria-hidden="true"></span>&nbsp;Tickets</a></li>
 			<li><a id='mainNav-navzone-1-link-2' href="messages"><span class="glyphicon glyphicon-envelope"

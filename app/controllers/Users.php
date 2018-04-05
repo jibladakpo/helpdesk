@@ -34,15 +34,20 @@ class Users extends \_DefaultController {
 
 
 		echo "<table class='table table-striped'>";
-		echo "<thead><tr> ".$this->model."</thead>";
+		echo "<tr><th> ".$this->model."</th>";
+		if(Auth::isAdmin()==1){
+		echo "<th>Modifier</th>";
+		echo "<th>Supprimer</th>" ;
+	}
+		echo" </tr>";
 		echo "<tbody>";
 		foreach ($objects as $object){
 
 			echo "<tr>";
 
 			echo "<td><a href= '".$baseHref."/view/".$object->getId()."'>$object</a> </td>";
-			if(Auth::isAdmin()==1){echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>".
-					"<td class='td-center'><a class='btn btn-warning btn-xs' href='".$baseHref."/delete/".$object->getId()."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a></td>";}
+			if(Auth::isAdmin()==1){echo "<td class=''><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>".
+					"<td class=''><a class='btn btn-warning btn-xs' href='".$baseHref."/delete/".$object->getId()."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a></td>";}
 
 			echo "</tr>";
 		}
@@ -75,11 +80,12 @@ class Users extends \_DefaultController {
 
 	public function view($id=NULL){
 		$user=$this->getInstance($id);
-		$this->loadView("user/account",array("user"=>$user));
+		$this->loadView("user/account",array("user"=>$user, "id"=>Auth::getIdA()));
 	}
 
 	public function isValid(){
 		return Auth::isAuth();
+
 	}
 
 	public function onInvalidControl(){

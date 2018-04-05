@@ -12,8 +12,12 @@ class User extends Base {
 	private $id;
 	private $login = "";
 	private $password = "";
+	private $nom = "";
+	private $prenom = "";
+	private $adresse ="";
 	private $mail = "";
 	private $admin = false;
+
 	public function getId() {
 		return $this->id;
 	}
@@ -32,9 +36,34 @@ class User extends Base {
 		return $this->password;
 	}
 	public function setPassword($password) {
-		$this->password = sha1($password);
+		$this->password = $password;
 		return $this;
 	}
+
+	public function getNom() {
+		return $this->nom;
+	}
+	public function setNom($nom) {
+		$this->nom = $nom;
+		return $this;
+	}
+
+	public function getPrenom() {
+		return $this->prenom;
+	}
+	public function setPrenom($prenom) {
+		$this->prenom = $prenom;
+		return $this;
+	}
+
+	public function getAdresse() {
+		return $this->adresse;
+	}
+	public function setAdresse($adresse) {
+		$this->adresse = $adresse;
+		return $this;
+	}
+
 	public function getMail() {
 		return $this->mail;
 	}

@@ -8,9 +8,9 @@
  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
  </div>
  <?php endif;?>
-      <label class="control-label col-sm-2" for="email">Email:</label>
+      <label class="control-label col-sm-2" for="email">Login:</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control" name="email" id="email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];}?>" placeholder="Votre email">
+        <input type="login" class="form-control" name="login" id="login" value="<?php if(isset($_POST['login'])){ echo $_POST['login'];}?>" placeholder="Votre Login">
       </div>
     </div>
     <div class="form-group">

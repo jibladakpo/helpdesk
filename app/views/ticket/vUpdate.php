@@ -9,6 +9,7 @@
 <div class="alert alert-info">Ticket : <?php echo $ticket->toString()?></div>
 <div class="form-group">
 	<input type="hidden" name="id" value="<?php echo $ticket->getId()?>">
+	<input type="hidden" name="idStatut" value="<?php echo $ticket->getStatut()?>">
 	<label for="type">Type</label>
 	<select class="form-control" name="type">
 	<?php echo $listType;?>

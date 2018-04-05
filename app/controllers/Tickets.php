@@ -14,7 +14,7 @@ class Tickets extends \_DefaultController {
 		$this->title="Tickets";
 		$this->model="Ticket";
 	}
-	
+
 	/**
 	 * Affiche la liste des instances de la class du modèle associé $model
 	 * @see BaseController::index()
@@ -30,38 +30,50 @@ class Tickets extends \_DefaultController {
 			$this->_showDisplayedMessage($message);
 		}
 		$objects=DAO::getAll($this->model);
-	
+
 		if($this->title=="Tickets"){
 			echo "<table class='table table-condensed'>";
-	
-			echo "<thead><tr><th>Mes tickets</th><th>Nombres</th></tr></thead>".
+
+			echo "<thead><tr><th>Tickets</th><th>Nombres</th></tr></thead>".
 					"<tbody><tr class='info'><td>Nouveau</td><td>".$this->NombreTicketNouveau()."</td></tr>
 				<tr class='warning'><td>En attente</td><td>".$this->NombreTicketAttente()."</td></tr>
 				<tr class='active'><td>Attribué</td><td>".$this->NombreTicketAttribuer()."</td></tr>
 				<tr class='success'><td>Résolu</td><td>".$this->NombreTicketResolu()."</td></tr></tbody></table>";
-	
 		}
-			
-	
+
 		echo "<table class='table table-striped'>";
-		echo "<thead><tr> " .$this->model."</thead>";
-		echo "<tbody>";
-		foreach ($objects as $object){
-	
-			echo "<tr>";
-	
-			echo "<td><a href= '".$baseHref."/view/".$object->getId()."'>$object</a> </td>";
-			echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>";
-			if(Auth::isAdmin()==1){ echo "<td class='td-center'><a class='btn btn-default btn-xs' title='Modifier le statut' href='".$baseHref."/frmUstat/".$object->getId()."'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></a></td>".
-					"<td class='td-center'><a class='btn btn-warning btn-xs' href='".$baseHref."/delete/".$object->getId()."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a></td>";}
-	
-			echo "</tr>";
+		echo "<tr><th> " .$this->model."</th>";
+			if(Auth::isAdmin()==1){
+			echo "<th> Modifier </th>";
 		}
+		if(Auth::isAdmin()==1||Auth::isAdmin()==2){
+				echo "<th> Statut </th>";
+			}
+			if(Auth::isAdmin()==1){
+			echo "<th> Supprimer</th>" ;
+		}
+		echo" </tr>";
+		echo "<tbody>";
+
+		foreach ($objects as $object){
+
+			echo "<tr>";
+
+			echo "<td><a href= '".$baseHref."/view/".$object->getId()."'>$object</a> </td>";
+			if(Auth::isAdmin()==1){ echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>";
+			}
+			if(Auth::isAdmin()==1||Auth::isAdmin()==2){ echo "<td class='td-center'><a class='btn btn-default btn-xs' title='Modifier le statut' href='".$baseHref."/frmUstat/".$object->getId()."'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></a></td>";
+			}
+			if(Auth::isAdmin()==1){	echo "<td class='td-center'><a class='btn btn-warning btn-xs' href='".$baseHref."/delete/".$object->getId()."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a></td>";
+				}
+			}
+			echo "</tr>";
+
 		echo "</tbody>";
 		echo "</table>";
 		echo "<a class='btn btn-primary' href='".$config["siteUrl"].$baseHref."/frm'>Ajouter...</a>";
 	}
-	
+
 	public function messages($id){
 		$ticket=DAO::getOne("Ticket", $id[0]);
 		if($ticket!=NULL){
@@ -97,7 +109,7 @@ class Tickets extends \_DefaultController {
 		$this->loadView("ticket/vAdd",array("ticket"=>$ticket,"listCat"=>$listCat,"listType"=>$listType));
 		echo Jquery::execute("CKEDITOR.replace( 'description');");
 	}
-	
+
 
 	public function frmUpdate($id=NULL){
 		$ticket=$this->getInstance($id);
@@ -117,34 +129,34 @@ class Tickets extends \_DefaultController {
 		$listCat=Gui::select($categories,$cat,"Sélectionner une catégorie ...");
 		$listType=Gui::select(array("demande","intervention"),$ticket->getType(),"Sélectionner un type ...");
 		$listStatut=Gui::select($statuts,$stt,"Modifier le statut ...");
-		
+
 		$this->loadView("ticket/vUpdate",array("ticket"=>$ticket,"listCat"=>$listCat,"listType"=>$listType,"listStatut"=>$listStatut));
 		echo Jquery::execute("CKEDITOR.replace( 'description');");
 	}
-	
+
 	public function frmUstat($id=NULL){
 		$ticket=$this->getInstance($id);
 		$statuts = DAO::getAll("statut");
-	
+
 		if($ticket->getStatut()==null){
 			$stt=-1;
 		}else{
 			$stt=$ticket->getStatut()->getId();
 		}
 		$listStatut=Gui::select($statuts,$stt,"Modifier le statut ...");
-	
+
 		$this->loadView("ticket/vUstat",array("ticket"=>$ticket,"listStatut"=>$listStatut));
 	}
-	
+
 	public function view($id=NULL){
 		$ticket=$this->getInstance($id);
-		$this->loadView("ticket/viewArticle",array("ticket"=>$ticket));
+		$this->loadView("ticket/viewTicket",array("ticket"=>$ticket));
 	}
-	
+
 	public function newT() {
-		
+
 		return 	$this->loadView("ticket/newT");
-	
+
 	}
 
 	/* (non-PHPdoc)
@@ -152,12 +164,13 @@ class Tickets extends \_DefaultController {
 	 */
 	protected function setValuesToObject(&$object) {
 		parent::setValuesToObject($object);
+
 		$categorie=DAO::getOne("Categorie", $_POST["idCategorie"]);
 		$object->setCategorie($categorie);
-		
+
 		$statut=DAO::getOne("Statut", $_POST["idStatut"]);
 		$object->setStatut($statut);
-		
+
 		$user=DAO::getOne("User", $_POST["idUser"]);
 		$object->setUser($user);
 	}

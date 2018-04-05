@@ -25,7 +25,7 @@ class Categories extends \_DefaultController {
 		$list=Gui::select($categories,$idParent,"Sélectionner une catégorie parente...");
 		$this->loadView("categorie/vAdd",array("select"=>$list,"categorie"=>$object));
 	}
-	
+
 	public function frmUpdate($id=NULL){
 		$object=$this->getInstance($id);
 		$categories=DAO::getAll("Categorie");
@@ -48,12 +48,12 @@ class Categories extends \_DefaultController {
 		}
 
 	}
-	
+
 	public function isValid(){
 		return Auth::isAuth();
-	
+
 	}
-	
+
 	public function onInvalidControl(){
 		$this->initialize();
 		$this->messageDanger("<strong>Autorisation refusée</strong>,<br>Merci de vous connecter pour accéder à ce module.&nbsp;".$this->loadView("main/frm_log"));

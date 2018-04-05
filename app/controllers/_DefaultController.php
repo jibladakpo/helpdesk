@@ -79,7 +79,7 @@ class _DefaultController extends BaseController {
 	public function frm($id=NULL){
 		echo "Non implémenté...";
 	}
-	
+
 	public function frmUpdate($id=NULL){
 		echo "Non implémenté...";
 	}
@@ -146,7 +146,7 @@ class _DefaultController extends BaseController {
 	 */
 	public function initialize() {
 		if(!RequestUtils::isAjax()){
-			$this->loadView("main/vHeader",array("infoUser"=>Auth::getInfoUser()));
+			$this->loadView("main/vHeader",array("infoUser"=>Auth::getInfoUser(),"id"=>Auth::getIdA()));
 			echo "<div class='container'>";
 			echo "<h1>".$this->title."</h1>";
 		}
@@ -222,27 +222,31 @@ class _DefaultController extends BaseController {
 
 	public function NombreTicketNouveau() {
 		return DAO::$db->query("SELECT Count(id) AS nb FROM `ticket` WHERE idStatut =1")->fetchColumn();
-	
+
 	}
-	
+
 	public function NombreTicketAttente() {
 		return DAO::$db->query("SELECT Count(id) AS nb FROM `ticket` WHERE idStatut =3")->fetchColumn();
-	
+
 	}
-	
+
 	public function NombreTicketAttribuer() {
 		return DAO::$db->query("SELECT Count(id) AS nb FROM `ticket` WHERE idStatut =2")->fetchColumn();
-	
+
 	}
-	
+
 	public function NombreTicketResolu() {
 		return DAO::$db->query("SELECT Count(id) AS nb FROM `ticket` WHERE idStatut =4")->fetchColumn();
-	
+
 	}
-	
+
 	public function afficherNouveau() {
-	
+
 		return 	$this->loadView("ticket/newT");
-	
+
+	}
+
+	public function AfficherMessage(){
+		return DAO::$db->query("SELECT ticket.titre,user.login, message.date FROM `ticket`,`message`,`user`,`statut` WHERE message.idUser = user.id AND ticket.id = message.idUser Group by ticket.titre ")->fetchColumn();
 	}
 }

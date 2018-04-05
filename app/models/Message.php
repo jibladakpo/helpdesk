@@ -57,12 +57,12 @@ class Message extends Base {
 		$this->ticket = $ticket;
 		return $this;
 	}
-	
+
 	/*
 	 * (non-PHPdoc)
 	 * @see Base::toString()
 	 */
 	public function toString() {
-		return $this->ticket . "-" . $this->user;
+		return $this->ticket ."-". $this->user." - ".$this->date;
 	}
 }
