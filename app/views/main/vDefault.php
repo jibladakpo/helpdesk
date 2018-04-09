@@ -3,7 +3,7 @@
 	<div class="well well-lg">
 		<div id="main">
 			<fieldset>
-				<legend>Données</legend>
+				<legend>Gestion des Données Helpdesk</legend>
 		<!--		<a class="btn btn-link" href="<?php echo $config["siteUrl"]?>">Accueil</a> -->
 				<a class="btn btn-default" href="users">Utilisateurs</a>
 				<a class="btn btn-primary" href="categories">Catégories</a>

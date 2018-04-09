@@ -29,20 +29,29 @@ class Tickets extends \_DefaultController {
 			$message->setTimerInterval($this->messageTimerInterval);
 			$this->_showDisplayedMessage($message);
 		}
+		if(Auth::isAdmin()==1||(Auth::isAdmin()==2)){
 		$objects=DAO::getAll($this->model);
+	}else{
+		$objects=DAO::getAll("ticket", "idUser=".Auth::getUser()->getId());
+	}
+
 
 		if($this->title=="Tickets"){
+			if(Auth::isAdmin()==1||(Auth::isAdmin()==2)){
 			echo "<table class='table table-condensed'>";
 
 			echo "<thead><tr><th>Tickets</th><th>Nombres</th></tr></thead>".
 					"<tbody><tr class='info'><td>Nouveau</td><td>".$this->NombreTicketNouveau()."</td></tr>
 				<tr class='warning'><td>En attente</td><td>".$this->NombreTicketAttente()."</td></tr>
 				<tr class='active'><td>Attribué</td><td>".$this->NombreTicketAttribuer()."</td></tr>
-				<tr class='success'><td>Résolu</td><td>".$this->NombreTicketResolu()."</td></tr></tbody></table>";
-		}
-
+				<tr class='success'><td>Résolu</td><td>".$this->NombreTicketResolu()."</td></tr>
+				<tr class='off'><td>Clos</td><td>".$this->NombreTicketClos()."</td></tr></tbody></table>";
+						}
+				}
 		echo "<table class='table table-striped'>";
-		echo "<tr><th> " .$this->model."</th>";
+		if(Auth::isAdmin()==0){
+		echo "<tr><th> Mes " .$this->model."</th>";
+	}
 			if(Auth::isAdmin()==1){
 			echo "<th> Modifier </th>";
 		}
@@ -151,6 +160,7 @@ class Tickets extends \_DefaultController {
 	public function view($id=NULL){
 		$ticket=$this->getInstance($id);
 		$this->loadView("ticket/viewTicket",array("ticket"=>$ticket));
+		echo Jquery::execute("CKEDITOR.replace( 'newMess');");
 	}
 
 	public function newT() {

@@ -13,7 +13,7 @@ class Faqs extends \_DefaultController {
 		$this->title="Foire aux questions";
 		$this->model="Faq";
 	}
-	
+
 	/**
 	 * Affiche la liste des instances de la class du modèle associé $model
 	 * @see BaseController::index()
@@ -29,26 +29,18 @@ class Faqs extends \_DefaultController {
 			$this->_showDisplayedMessage($message);
 		}
 		$objects=DAO::getAll($this->model);
-	
+
 		echo "<table class='table table-striped'>";
-		echo "<thead><tr> " .$this->model."</thead>";
-		echo "<div id='searchbar'>
-		
-                <form method='get' action='127.0.0.1/helpdesk/views/faqs/search.php'>
-               <input class='champ' type='text' value=''/>
-                    <input class='bouton' type='button' value='search ' />
-           
-                </form>
-                </div><br>";
+
 		echo "<tbody>";
 		foreach ($objects as $object){
-	
+
 			echo "<tr>";
-	
+
 			echo "<td><a href= '".$baseHref."/view/".$object->getId()."'>$object</a> </td>";
 			if(Auth::isAdmin()==1){echo "<td class='td-center'><a class='btn btn-primary btn-xs' href='".$baseHref."/frmUpdate/".$object->getId()."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>".
 					"<td class='td-center'><a class='btn btn-warning btn-xs' href='".$baseHref."/delete/".$object->getId()."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a></td>";}
-	
+
 			echo "</tr>";
 		}
 		echo "</tbody>";
@@ -75,7 +67,7 @@ class Faqs extends \_DefaultController {
 		$ArticleMax=DAO::getOne("Faq","id=(SELECT max(id) FROM Faq)");
 		echo $ArticleMax;
 	}
-	
+
 	public function frm($id=NULL){
 		$faq=$this->getInstance($id);
 		$categories=DAO::getAll("Categorie");
@@ -87,7 +79,7 @@ class Faqs extends \_DefaultController {
 		$listCat=Gui::select($categories,$cat,"Sélectionner une catégorie ...");
 		$this->loadView("faq/vAdd",array("faq"=>$faq,"listCat"=>$listCat));
 	}
-	
+
 
 	public function frmUpdate($id=NULL){
 		$faq=$this->getInstance($id);
@@ -103,10 +95,10 @@ class Faqs extends \_DefaultController {
 	public function view($id=NULL){
 		$ticket=$this->getInstance($id);
 		$this->loadView("faq/viewArticleF",array("ticket"=>$ticket));
-	
+
 
 	}
-	
+
 	public function getInstance($id = NULL) {
 		$obj=parent::getInstance($id);
 		if($obj->getUser()===NULL){
@@ -117,14 +109,14 @@ class Faqs extends \_DefaultController {
 		}
 		return $obj;
 	}
-	
+
 	/* (non-PHPdoc)
 	 * @see BaseController::isValid()
 	 */
 	public function isValid() {
 		return Auth::isAuth();
 	}
-	
+
 	/* (non-PHPdoc)
 	 * @see BaseController::onInvalidControl()
 	 */

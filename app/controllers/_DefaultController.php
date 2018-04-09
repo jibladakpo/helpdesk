@@ -240,6 +240,11 @@ class _DefaultController extends BaseController {
 
 	}
 
+	public function NombreTicketClos() {
+		return DAO::$db->query("SELECT Count(id) AS nb FROM `ticket` WHERE idStatut =5")->fetchColumn();
+
+	}
+
 	public function afficherNouveau() {
 
 		return 	$this->loadView("ticket/newT");

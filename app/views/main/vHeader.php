@@ -66,8 +66,6 @@
 					aria-hidden='true'></span>&nbsp;Mon compte</a></li> "?>
 			<li><a id='mainNav-navzone-1-link-2' href="tickets"><span class="glyphicon glyphicon-tags"
 					aria-hidden="true"></span>&nbsp;Tickets</a></li>
-			<li><a id='mainNav-navzone-1-link-2' href="messages"><span class="glyphicon glyphicon-envelope"
-					aria-hidden="true"></span>&nbsp;Messages</a></li>
 			<li><a id='mainNav-navzone-1-link-3' href="faqs"><span class="glyphicon glyphicon-book"
 					aria-hidden="true"></span>&nbsp;FAQ</a></li>
 			<?php }?>

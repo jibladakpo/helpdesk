@@ -1,5 +1,7 @@
 <?php
 use micro\orm\DAO;
+use micro\js\Jquery;
+use micro\views\Gui;
 /**
  * Gestion des messages
  * @author jcheron
@@ -97,8 +99,15 @@ class Messages extends \_DefaultController {
 
 	DAO::$db->execute("INSERT INTO message(id,contenu,idUser,idTicket) VALUES('','".$contenu."',".$user.",".$ticket.")");
 
+	
+	if (Auth::isAdmin()){
+			$obj=DAO::getOne("ticket", "id=".$ticket);
+			$obj->setIdAdmin(Auth::getUser()->getId());
+			DAO::update($obj);
 
-	$this->forward("Tickets","view",$ticket);
+		}
+
+		$this->forward("Tickets","vie",$ticket);
 
 }
 
