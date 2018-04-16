@@ -1,6 +1,8 @@
 <?php
 use micro\orm\DAO;
 use micro\utils\RequestUtils;
+use micro\js\Jquery;
+use micro\views\Gui;
 use micro\controllers\BaseController;
 /**
  * Classe de base des contrôleurs Helpdesk
@@ -104,6 +106,7 @@ class _DefaultController extends BaseController {
 			$className=$this->model;
 			$object=new $className();
 			$this->setValuesToObject($object);
+			$id=Auth::getUser()->getId();
 			if($_POST["id"]){
 				try{
 					DAO::update($object);
@@ -119,7 +122,9 @@ class _DefaultController extends BaseController {
 					$msg=new DisplayedMessage("Impossible d'ajouter l'instance de ".$this->model,"danger");
 				}
 			}
+
 			$this->forward(get_class($this),"index",$msg);
+		
 		}
 	}
 
@@ -161,6 +166,7 @@ class _DefaultController extends BaseController {
 			$this->loadView("main/vFooter");
 		}
 	}
+
 
 	/**
 	 * Affiche un message Alert bootstrap
@@ -219,6 +225,8 @@ class _DefaultController extends BaseController {
 	public function messageInfo($message,$timerInterval=0,$dismissable=true){
 		$this->_showMessage($message,"info",$timerInterval,$dismissable);
 	}
+
+
 
 	public function NombreTicketNouveau() {
 		return DAO::$db->query("SELECT Count(id) AS nb FROM `ticket` WHERE idStatut =1")->fetchColumn();

@@ -99,7 +99,6 @@ class Messages extends \_DefaultController {
 
 	DAO::$db->execute("INSERT INTO message(id,contenu,idUser,idTicket) VALUES('','".$contenu."',".$user.",".$ticket.")");
 
-	
 	if (Auth::isAdmin()){
 			$obj=DAO::getOne("ticket", "id=".$ticket);
 			$obj->setIdAdmin(Auth::getUser()->getId());
@@ -107,7 +106,7 @@ class Messages extends \_DefaultController {
 
 		}
 
-		$this->forward("Tickets","vie",$ticket);
+		$this->forward("Tickets","view",$ticket);
 
 }
 

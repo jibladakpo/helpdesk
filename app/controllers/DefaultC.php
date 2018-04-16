@@ -18,7 +18,10 @@ class DefaultC extends BaseController {
 	public function index() {
 		if(Auth::isAuth()){
 		$this->loadView("main/vHeader",array("infoUser"=>Auth::getInfoUser(),"id"=>Auth::getIdA()));
-		$this->loadView("main/vFooter");
+		if(Auth::isAdmin()==0||Auth::isAdmin()==2){
+		$this->forward("Accueil","vAccueil");
+
+		}
 		if(Auth::isAdmin()==1){
 		$this->loadView("main/vDefault");
 		}

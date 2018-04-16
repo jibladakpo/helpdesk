@@ -5,7 +5,6 @@ use micro\orm\DAO;
 <fieldset>
 
 <div class="form-group">
-	<form name="frm2Titre" id="frm2Titre" onSubmit="return false;">
 	<input type="hidden" name="id" value="<?php echo $ticket->getId()?>">
 	<label for="type">Type</label>
 
@@ -25,7 +24,7 @@ use micro\orm\DAO;
 	<?php echo $ticket->getUser()?><br>
 	<label for="dateCreation">Date de création</label>
 	<?php echo $ticket->getDateCreation()?>
-</form>
+
 </div>
 
 </fieldset>
@@ -35,9 +34,7 @@ use micro\orm\DAO;
 $idTicket = $ticket->getId();
 $msg = DAO::getAll("message", "idTicket='".$idTicket."'");
 $user = $_SESSION["user"]->getId();
-
 foreach ($msg as $oklm){ ?>
-
 	<div class="form-group" style="background-color:<?php if ($oklm->getUser()->getAdmin()==1){echo '#FFC3C3;';}else if ($oklm->getUser()->getAdmin()==2){echo '#95fa8d;';} else{echo '#D4F8F9;';}?>padding:20px; margin-top:10px;  display:block; overflow:hidden; border:solid #aaa 2px; border-radius:5px;">
 		<p id="contMess" name="contMess"><?= $oklm->getContenu();?></p>
 		<br>

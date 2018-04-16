@@ -16,7 +16,7 @@ class User extends Base {
 	private $prenom = "";
 	private $adresse ="";
 	private $mail = "";
-	private $admin = 2;
+	private $admin = 0;
 
 	public function getId() {
 		return $this->id;

@@ -66,6 +66,13 @@ class Users extends \_DefaultController {
 		$this->loadView("user/vUpdate",array("user"=>$user));
 	}
 
+	public function frmUpdateAccount($id=NULL){
+		$user=$this->getInstance($id);
+		$this->loadView("user/vUpdateAccount",array("user"=>$user));
+	}
+
+
+
 	/* (non-PHPdoc)
 	 * @see _DefaultController::setValuesToObject()
 	 */

@@ -1,4 +1,9 @@
-<form method="post" action="users/update">
+<?php
+use micro\orm\DAO;
+use micro\js\Jquery;
+use micro\views\Gui;
+?>
+<form method="post" action="s">
 <fieldset>
 <legend>Mes informations</legend>
 <div class="alert alert-info">Mon compte : <?php echo $user->toString()?></div>
@@ -18,8 +23,8 @@
 
 </div>
 <div class="form-group">
-
-<!--	<a class="btn btn-default" href="<?php echo $config["siteUrl"]?>users">Retour</a> -->
+<?php echo"	<a class='btn btn-default' href='users/frmUpdateAccount/".$user->getId()."'>Mofifier compte</a> ";?>
+	
 </div>
 
 </form>

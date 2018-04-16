@@ -11,7 +11,7 @@
 				<a class="btn btn-success" href="statuts">Statuts</a>
 				<a class="btn btn-warning" href="faqs">Faq</a>
 				<a class="btn btn-danger" href="messages">Messages</a>
-				<a class="btn btn-danger" href="tickets/messages/1">Messages d'un ticket</a>
+			<a class="btn btn-danger" href="tickets/messages/1">Messages d'un ticket</a> 
 			</fieldset>
 			<!--
 			<fieldset>

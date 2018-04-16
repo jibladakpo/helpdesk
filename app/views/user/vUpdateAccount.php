@@ -1,6 +1,6 @@
 <form method="post" action="users/update">
 <fieldset>
-<legend>Ajouter un utilisateur</legend>
+<legend>Modifier un utilisateur</legend>
 <div class="alert alert-info">Utilisateur : <?php echo $user->toString()?></div>
 <div class="form-group">
 	<p><input type="hidden" name="id" value="<?php echo $user->getId()?>"></p>
@@ -17,15 +17,18 @@
 	<label>Mot de passe</label>
 	<p><input type="password" name="password" value="<?php echo $user->getPassword()?>" placeholder="Entrez le mot de passe" class="form-control"></p>
 
+
+<?php if ($user->getAdmin()==1){ ?>
 	<div class="checkbox">
-		<label><input type="checkbox" name="admin[]" value="1">Administrateur ?</label>
-		<label><input type="checkbox" name="admin[]" value="2">Technicien ?</label>
+		<label><input type="checkbox" name="admin[]" <?php if ($user->getAdmin()==1){echo ($user->getAdmin()?"checked":"checked");}?> value="1">Administrateur ?</label>
+		<label><input type="checkbox" name="admin[]" <?php if ($user->getAdmin()==2){echo ($user->getAdmin()?"checked":"checked");}?> value="2">Technicien ?</label>
 	</div>
+<?php };?>
 </div>
 
 <div class="form-group">
 	<input type="submit" value="Valider" class="btn btn-default">
-	<a class="btn btn-default" href="<?php echo $config["siteUrl"]?>users">Annuler</a>
+	<?php echo"	<a class='btn btn-default' href='users/view/".$user->getId()."'>Retour</a> ";?>
 </div>
 
 </fieldset>

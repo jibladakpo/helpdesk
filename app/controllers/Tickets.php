@@ -50,8 +50,11 @@ class Tickets extends \_DefaultController {
 				}
 		echo "<table class='table table-striped'>";
 		if(Auth::isAdmin()==0){
-		echo "<tr><th> Mes " .$this->model."</th>";
+		echo "<tr><th> Mes " .$this->model."s</th>";
 	}
+		if(Auth::isAdmin()==1||Auth::isAdmin()==2){
+			echo "<tr><th> " .$this->model."</th>";
+		}
 			if(Auth::isAdmin()==1){
 			echo "<th> Modifier </th>";
 		}
@@ -174,13 +177,10 @@ class Tickets extends \_DefaultController {
 	 */
 	protected function setValuesToObject(&$object) {
 		parent::setValuesToObject($object);
-
 		$categorie=DAO::getOne("Categorie", $_POST["idCategorie"]);
 		$object->setCategorie($categorie);
-
 		$statut=DAO::getOne("Statut", $_POST["idStatut"]);
 		$object->setStatut($statut);
-
 		$user=DAO::getOne("User", $_POST["idUser"]);
 		$object->setUser($user);
 	}

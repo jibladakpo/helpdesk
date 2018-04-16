@@ -12,36 +12,7 @@
 </head>
 <meta charset="UTF-8">
 <body>
-	<nav class="navbar navbar-default navbar-inverse" id="mainNav">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#mainNav">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="<?php echo $config["siteUrl"]?>" target="_self">HelpDesk</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="collapse-mainNav">
-			<?php if(Auth::isAuth()){?>
-				<ul class="nav navbar-nav navbar-nav">
-					<li id='mainNav-navzone-1-li-1'><a id='mainNav-navzone-1-link-1'
-						href="Tickets/frm">Créer un ticket</a></li>
-					<li id='mainNav-navzone-1-li-2'><a id='mainNav-navzone-1-link-2'
-						href="tickets">Tickets</a></li>
-					<li id='mainNav-navzone-1-li-3'><a id='mainNav-navzone-1-link-3'
-						href="faqs">Foire aux questions</a></li>
-				<?php }?>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
+	
 	<div class="bs-docs-header">
 		<div class="container">
 			<div class="header">
@@ -60,14 +31,19 @@
 	<div class="container">
 		<ol class="breadcrumb">
 		<?php if(Auth::isAuth()){?>
-			<li><a href="<?php echo $config["siteUrl"]?>"><span class="glyphicon glyphicon-home"
-					aria-hidden="true"></span>&nbsp;Accueil</a></li>
+			<?php if(Auth::isAdmin()==0){ ?>
+			<?php echo "<li><a href='Accueil/vAccueil/".$id."'><span class='glyphicon glyphicon-home'
+					aria-hidden='true'></span>&nbsp;Accueil</a></li> </span> ";?>
+				<?php }else{ ?>
+					<?php echo "<li><a href='".$config['siteUrl']."'><span class='glyphicon glyphicon-home'
+							aria-hidden='true'></span>&nbsp;Accueil</a></li> </span> ";?>
+						<?php } ?>
 		<?php echo"	<li><a id='mainNav-navzone-1-link-2' href='users/view/".$id."'><span class='glyphicon glyphicon-user'
-					aria-hidden='true'></span>&nbsp;Mon compte</a></li> "?>
+					aria-hidden='true'></span>&nbsp;Mon compte</a></li> ";?>
 			<li><a id='mainNav-navzone-1-link-2' href="tickets"><span class="glyphicon glyphicon-tags"
 					aria-hidden="true"></span>&nbsp;Tickets</a></li>
 			<li><a id='mainNav-navzone-1-link-3' href="faqs"><span class="glyphicon glyphicon-book"
 					aria-hidden="true"></span>&nbsp;FAQ</a></li>
-			<?php }?>
+			<?php };?>
 		</ol>
 	</div>
