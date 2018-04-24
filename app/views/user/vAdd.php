@@ -17,6 +17,7 @@
 	<label>Mot de passe</label>
 	<p><input type="password" name="password" value="<?php echo $user->getPassword()?>" placeholder="Entrez le mot de passe" class="form-control"></p>
 
+	<label>Type d'utilisateur</label>
 	<div class="checkbox">
 		<label><input type="checkbox" name="admin[]" value="1">Administrateur ?</label>
 		<label><input type="checkbox" name="admin[]" value="2">Technicien ?</label>

@@ -24,7 +24,10 @@ use micro\views\Gui;
 </div>
 <div class="form-group">
 <?php echo"	<a class='btn btn-default' href='users/frmUpdateAccount/".$user->getId()."'>Mofifier compte</a> ";?>
-	
+<?php if(Auth::isAdmin()==1){
+	echo "<a class='btn btn-default' href='".$config['siteUrl']."users'>Retour</a>";
+	}
+	?>
 </div>
 
 </form>

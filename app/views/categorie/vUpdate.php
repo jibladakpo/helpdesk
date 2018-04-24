@@ -4,7 +4,9 @@
 <div class="alert alert-info">Catégorie : <?php echo $categorie->toString()?></div>
 <div class="form-group">
 	<input type="hidden" name="id" value="<?php echo $categorie->getId()?>">
+	<label >Nom catégorie</label>
 	<input type="text" name="libelle" value="<?php echo $categorie->getLibelle()?>" placeholder="Entrez un libelle" class="form-control">
+	<label>Catégorie Parente</label>
 	<select class="form-control" name="idCategorie">
 	<?php echo $select?>
 	</select>
